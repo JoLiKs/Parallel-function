@@ -1,16 +1,24 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+async def scheduled_offer():
+    while True:
+        now = datetime.datetime.now().time()
+        await asyncio.sleep(1)
+        if now.minute == 0 and now.second == 1: #делать что-то раз в час
+            pass
 
 
-# Press the green button in the gutter to run the script.
+
+def main():
+ 
+    loop = asyncio.get_event_loop()
+    loop.create_task(scheduled_offer()) #функция, которая будет работать параллельно 
+    try:
+        loop.run_until_complete(application.run_polling()) #запуск основной функции (например, бот)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        loop.close()
+
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
