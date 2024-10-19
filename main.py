@@ -1,7 +1,7 @@
 async def scheduled_offer():
     while True:
         now = datetime.datetime.now().time()
-        await asyncio.sleep(1)
+        #await asyncio.sleep(1)
         if now.minute == 0 and now.second == 1: #делать что-то раз в час
             pass
 
